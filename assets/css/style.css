@@ -1,0 +1,12 @@
+.cars{
+  margin: 10px;
+}
+.item{
+  float: left;
+  margin: 10px;
+  max-width: 350px;
+  
+}
+.item img{
+  max-width: 300px;
+}
