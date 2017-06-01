@@ -1,16 +1,27 @@
+body{
+  background-color: #111;
+}
 .cars{
   margin: 10px;
 }
 #car-gifs{
-  border: 
+  width: 100%;
 }
 .item{
   display: inline-block;
   margin: 10px;
   padding: 10px;
-  width: 260px;
+  width: 240px;
 }
 .item img{
-  max-width: 250px;
+  max-width: 230px;
   max-height: 180px;
+}
+#car-input{
+  margin: 5px 10px;
+  padding: 3px;
+}
+#add-car{
+  align-items: center;
+  margin: 0 10px;
 }

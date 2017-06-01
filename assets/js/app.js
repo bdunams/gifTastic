@@ -1,3 +1,4 @@
+// initial cars available
 var cars = ['Ford Mustang', 'Dodge Challenger', 'Chevy Camaro','Dodge Charger','Audi A7'];
 
 // Function for displaying cars buttons
@@ -12,7 +13,7 @@ function createButtons() {
     // creates html button element
     var car = $("<button>");
     // Adds a classes to button
-    car.addClass("cars btn btn-info");
+    car.addClass("cars btn btn-danger");
     // Added a data-attribute
     car.attr("data-name", cars[i]);
     // Button text
@@ -26,6 +27,7 @@ createButtons();
 
 $(document).on("click","button", function() {
   
+  // to prevent duplicates and overflow
   $('#car-gifs').empty();
   
   var person = $(this).attr("data-name");
@@ -38,36 +40,38 @@ $(document).on("click","button", function() {
     })
     .done(function(response) {
       var results = response.data;
-    
-      console.log(response);
 
+      // loop through the results from giphy
       for (var i = 0; i < results.length; i++) {
-        var gifDiv = $("<div class='item'>");
-
+        // create div for each result
+        var carDiv = $("<div class='item'>");
+        // get rating for each
         var rating = results[i].rating;
-
+        // create p element with rating in it
         var p = $("<p>").text("Rating: " + rating);
+        // create img element with src as each gif url
+        var carImage = $("<img>");
+        carImage.attr("src", results[i].images.fixed_height.url);
 
-        var personImage = $("<img>");
-        personImage.attr("src", results[i].images.fixed_height.url);
+        carDiv.append(p);
+        carDiv.append(carImage);
 
-        gifDiv.append(p);
-        gifDiv.prepend(personImage);
-
-        $("#car-gifs").prepend(gifDiv);
+        $("#car-gifs").prepend(carDiv);
       }
     });
 });
 
 $("#add-car").on("click", function(event) {
-  event.preventDefault();
   // This line of code will grab the input from the textbox
+  event.preventDefault();
+
+  // store data in input
   var car = $("#car-input").val().trim();
 
-  // The movie from the textbox is then added to our array
+  // The car from the textbox is then added to our array
   cars.push(car);
 
-  // Calling renderButtons which handles the processing of our movie array
+  // Calling createButtons which handles the processing of our car array
   createButtons();
 
 });
