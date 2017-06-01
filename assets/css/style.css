@@ -1,12 +1,16 @@
 .cars{
   margin: 10px;
 }
+#car-gifs{
+  border: 
+}
 .item{
-  float: left;
+  display: inline-block;
   margin: 10px;
-  max-width: 350px;
-  
+  padding: 10px;
+  width: 260px;
 }
 .item img{
-  max-width: 300px;
+  max-width: 250px;
+  max-height: 180px;
 }
